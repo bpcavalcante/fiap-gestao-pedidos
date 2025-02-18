@@ -1,6 +1,6 @@
 version: '3.3'
 services:
-  postgres:
+  postgres_pedidos:
     image: postgres:15
     container_name: postgres_gestao_pedidos
     environment:
@@ -8,6 +8,6 @@ services:
       POSTGRES_PASSWORD: root
       POSTGRES_DB: pedidodb
     ports:
-      - 5433:5432
+      - 5450:5432
     volumes:
       - ./postgres:/var/lib/postgresql/data
