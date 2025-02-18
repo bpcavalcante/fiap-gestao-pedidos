@@ -11,3 +11,18 @@ services:
       - 5450:5432
     volumes:
       - ./postgres:/var/lib/postgresql/data
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    restart: always
+    ports:
+      - "5672:5672"   # Porta para comunicação entre serviços
+      - "15672:15672" # Painel de gerenciamento web
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    healthcheck:
+      test: [ "CMD", "rabbitmqctl", "status" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
