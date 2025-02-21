@@ -76,31 +76,18 @@ Antes de iniciar, certifique-se de ter os seguintes requisitos atendidos:
 
 7. **Testando o Sistema:**
    Use os comandos curl abaixo para testar as funcionalidades do sistema:
-   - **Cadastrar Cliente**
+   - **Cadastrar Pedido**
      ```bash
-      curl --location 'localhost:8082/clientes' \
+      curl --location 'http://localhost:8080/pedidos' \
       --header 'Content-Type: application/json' \
-      --data-raw '{
-          "nome":"Bruno",
-          "email" : "bruno@gmail.com",
-          "telefone": "11947527413",
-          "endereco": "Rua Padre Jose Vieira de Matos 970"
+      --data '{
+        "clienteId": 5,
+        "itens": {
+          "16": 1
+        }
       }'
-   - **Atualizar Cliente**
+   - **Consultar Pedido**
      ```bash
-      curl --location --request PUT 'localhost:8080/clientes/4' \
-      --header 'Content-Type: application/json' \
-      --data-raw '{
-          "nome":"Bruno 254",
-          "email" : "bruno@gmail.com",
-          "telefone": "11947527413",
-          "endereco": "Rua Padre Jose Vieira de Matos 970"
-      }'
-   - **Visualizar Cliente**
-     ```bash
-      curl --location 'localhost:8082/clientes/1'
-   - **Excluir Cliente**
-     ```bash
-      curl --location --request DELETE 'localhost:8080/clientes/2'    
+      curl --location 'http://localhost:8080/pedidos/76'
 8. **Verificando doc Swagger:**
    Acesse o link http://localhost:8080/swagger-ui/index.html com o projeto rodando
